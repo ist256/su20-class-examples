@@ -40,7 +40,7 @@ class Submission:
 
         self.__roster__ = self.load_dataframe(roster_url)
         self.__assignments__ = self.load_dataframe(assignments_url)
-        self.__instructor__ = self.__roster__['instructor'][self.__roster__['netid']==self.__netid__].values[0]
+        self.__instructor__ = self.__roster__['instructor_netid'][self.__roster__['student_netid']==self.__netid__].values[0]
         self.__submit_date__ = datetime.now()
         try:
             self.__due_date__ = parser.parse(self.__assignments__['duedate'][ self.__assignments__['unit'] == self.__unit__][self.__assignments__['name'] == self.__assignment__].values[0])
